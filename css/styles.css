@@ -1,0 +1,302 @@
+html{
+    scroll-behavior: smooth;
+}
+
+@font-face {
+   font-family: 'Oswald';
+   src: url("../fonts/Oswald/stylesheet.css");
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body{
+    font-family: 'Oswald', sans-serif;
+    font-style: normal;
+    color: #1d1d1d;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container{
+    max-width: 1143px;
+    margin: 0 auto;
+}
+
+.feedback {
+	background: #fff;
+	padding: 0;
+	margin: 0;
+}
+.gallery {
+	position: relative; 
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+}
+.cards {
+	position: absolute;
+	width: 14rem;
+	height: 18rem;
+	top: 40%;
+	left: 45%;
+	transform: translate(-50%, -50%);
+}
+
+.cards li {
+	list-style: none;
+	padding: 25px 30px;
+	margin: 0;
+	width: 354px;
+	height: 357px;
+	text-align: center;
+	background-color: #FFF0CA;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 18px;
+}
+
+.container_inside_card{
+  background-color: #fff;
+  height: 200px;
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.actions {
+	position: absolute;
+	bottom: 15px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.prev, .next {
+  display:inline-block;
+  outline: none;
+  border: none;
+  padding: 8px 14px;
+  background: #2D4F2B;
+  -webkit-box-shadow: 0px 1px 0px 414141;
+  -moz-box-shadow: 0px 1px 0px 414141;
+  box-shadow: 0px 1px 0px 414141;
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 auto 10px;
+  -webkit-border-radius: 4;
+  -moz-border-radius: 4;
+  border-radius: 4px;
+  padding: 12px 25px;
+  font-weight:400;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 18px;
+  transition: 0.6s ease;
+}
+
+.prev{
+  margin-right: 10px;
+}
+
+.next{
+  margin-left: 10px;
+}
+
+button:hover {
+  background: #708A58;
+  text-shadow: 0px 1px 0px #32610e;
+  -webkit-box-shadow: 0px 1px 0px fefefe;
+  -moz-box-shadow: 0px 1px 0px fefefe;
+  box-shadow: 0px 1px 0px fefefe;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.feedback_title_firstpart{
+  font-weight: 600;
+  font-size: 64px;
+  color: #000;
+}
+
+.feedback_title_secondpart{
+  font-weight: 300;
+  font-size: 80px;
+  color: #708A58;
+  margin-left: 157px;
+}
+
+.data_feebacker_card{
+  display: flex;
+}
+
+.feedback_text{
+  text-align: left;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.social_networks{
+  display: flex;
+  gap: 35px;
+}
+
+.navigation_header{
+  background-color: #FFF0CA;
+  width: 100%;
+  padding: 5px 0;
+}
+
+.header{
+  position: relative;
+  background-color: #000;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.header::before {
+  content: url('../images/header_bg.png');
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: -1;
+}
+
+.navigation_header .container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contacts_header{
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+  gap: 14px;
+}
+
+.location_nav{
+  font-size: 24px;
+  font-weight: 400;
+  margin-left: 5px;
+  cursor: pointer;
+  color: #000;
+}
+
+.place_header{
+  display: flex;
+}
+
+.phone_nav{
+  font-weight: 400;
+  font-size: 30px;
+  color: #000;
+  transition: 0.6s ease;
+  cursor: pointer;
+}
+
+.phone_nav:hover{
+   color: #708A58;
+}
+
+.name_feedbacker{
+  font-weight: 600;
+  font-size: 27px;
+}
+
+.surname_feebacker{
+    font-weight: 300;
+  font-size: 20px;
+}
+
+.name_feedbacker_card{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.date_feedback_card{
+  font-weight: 600;
+  font-size: 20px;
+  color: #2D4F2B;
+}
+
+.data_feebacker_card{
+  display: flex;
+  align-items: end;
+  gap: 20px;
+  margin-top: 25px;
+}
+
+
+.title_header{
+  color: #FFB823;
+  font-weight: 700;
+  font-size: 80px;
+}
+
+.desc_header{
+  font-weight: 400;
+  font-size: 40px;
+  color: white;
+}
+
+.text_header{
+  margin-top: 310px;
+  padding-bottom: 400px;
+}
+
+@font-face {
+  font-display: block;
+  font-family: Mori;
+  font-style: normal;
+  font-weight: 900;
+  src: url(https://assets.codepen.io/16327/PPMori-SemiBold.woff) format("woff");
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.aboutus .container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #fff;
+}
+
+.container_new {
+  width: 90vw;
+  margin-top: 40vh;
+}
+.line {
+  display: block;
+  overflow: hidden;
+}
+
+.split {
+  opacity: 0;
+  text-align: center;
+  color: rgb(14, 16, 15);
+  font-size: 2rem;
+  will-change: transform;
+  color: #0e100f;
+}
+
+.split * {
+  will-change: transform;
+}
+
+.spacer {
+  height: 40vh
+}
