@@ -118,12 +118,11 @@ document.fonts.ready.then(() => {
       stagger: 0.1,
       ease: "power3.out",
       scrollTrigger: {
-        trigger: block,
-        start: "top 80%",
-        end: "bottom center",
-        scrub: true,
-        markers: true
-      }
+  trigger: block,
+  start: "top 80%",
+  end: "bottom center",
+  scrub: true
+}
     });
   });
 });

@@ -252,21 +252,6 @@ button:hover {
   padding-bottom: 400px;
 }
 
-@font-face {
-  font-display: block;
-  font-family: Mori;
-  font-style: normal;
-  font-weight: 900;
-  src: url(https://assets.codepen.io/16327/PPMori-SemiBold.woff) format("woff");
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-
 .aboutus .container{
   display: flex;
   align-items: center;
@@ -277,8 +262,9 @@ body {
 
 .container_new {
   width: 90vw;
-  margin-top: 40vh;
+  margin-top: 30vh;
 }
+
 .line {
   display: block;
   overflow: hidden;
@@ -291,6 +277,8 @@ body {
   font-size: 2rem;
   will-change: transform;
   color: #0e100f;
+  display: flex;
+  align-items: center;
 }
 
 .split * {
@@ -298,5 +286,330 @@ body {
 }
 
 .spacer {
-  height: 40vh
+  height: 30vh;
 }
+
+.first_text{
+  font-weight: 500;
+  font-size: 96px;
+  margin-left: 15px;
+}
+
+.second_text1{
+  font-size: 96px;
+  font-weight: 200;
+  color: rgba(0, 0, 0, 0.57);
+}
+
+.second_text2{
+  font-size: 96px;
+  font-weight: 500;
+  color: #2D4F2B;
+  margin-left: 30px
+}
+
+.third_text{
+  font-weight: 700;
+  font-size: 85px;
+    position: relative;
+}
+
+.third1{
+  margin-bottom: 250px;
+  margin-left: 44px;
+}
+
+.third2{
+  margin-top: 170px;
+}
+.text2{
+  margin-left: 15px;
+}
+
+.forth_text{
+  font-weight: 300;
+  font-size: 100px;
+  margin-bottom: 50px;
+  color: #FFB823;
+}
+
+.split_new::before{
+  content: url('/images/circle_aboutus.svg');
+  position: absolute;
+  right: 12%;
+}
+
+.fifth_text1{
+  font-size: 57px;
+  color: rgba(0, 0, 0, 0.67);
+  font-weight: 400;
+}
+.split_new{
+  position: relative;
+}
+.fifth_text2{
+  color: #2D4F2B;
+  font-weight: 500;
+  font-size: 80px;
+  margin-left: 20px;
+}
+
+.whyus_title1{
+  font-size: 98px;
+  font-weight: 600;
+  color: #FFB823;
+}
+
+.title_text_whyus{
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
+
+.whyus_title2{
+  font-weight: 300;
+  font-size: 80px;
+  margin-left: 10px;
+}
+
+.container_new:first-child {
+  margin-top: 100px;
+}
+
+.container_new:last-child {
+  margin-bottom: 100px;
+}
+
+
+.third1::before{
+   content: url
+}
+
+.card{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+}
+
+
+.table_rows{
+  display: flex;
+  flex-direction: column;
+  gap: 85px;
+  padding-bottom: 80px;
+}
+
+
+.text_card:before{
+  content: url('/images/circle_whyus.svg');
+  position: absolute;
+  z-index: -1;
+}
+
+.title_card{
+  font-size: 96px;
+  font-weight: 600;
+  margin-left: 55px;
+}
+
+.desc_card{
+  font-weight: 300;
+  font-size: 64px;
+  margin-left: 55px;
+  line-height: 0.8;
+}
+
+.title_card span{
+  color: #2D4F2B;
+}
+
+
+.first_card{
+  align-items: start;
+}
+
+.second_card{
+  align-items: center;
+}
+.third_card{
+  align-items: end;
+}
+
+.title_text_offer{
+  display: flex;
+  flex-direction: column;
+}
+
+.offer_title1{
+  font-size: 80px;
+  font-weight: 300;
+}
+
+.offer_title2{
+  font-size: 80px;
+  font-weight: 700;
+  color: #2D4F2B;
+  margin-left: 92px;
+  line-height: 0.9;
+}
+
+.card_offer{
+  background-color: #708A58;
+    border-radius: 25px;
+    position: relative;
+    padding: 127px 84px 43px;
+    margin-top: 80px;
+    margin-bottom: 65px;
+}
+
+.card_offer:before{
+  content: url('/images/circle_offer_card.svg');
+  position: absolute;
+  top: 0;
+  right: 5%;
+}
+
+.numbertext_offercard{
+  font-size: 84px;
+  font-weight: 600;
+  color: #FFF0CA;
+}
+
+
+.desc_offercard{
+  font-weight: 300;
+  font-size: 84px;
+  color: #FFF0CA;
+}
+
+.towns_mainpart_geo{
+  margin-top: 44px;
+}
+
+.title_text_geo{
+  display: flex;
+}
+
+
+.geo_title1{
+  font-weight: 700;
+  font-size: 80px;
+}
+
+.geo_title2{
+  font-weight: 700;
+  font-size: 80px;
+  color: #FFB823;
+  margin-left: 20px;
+}
+
+
+.desc_geo{
+  font-size: 50px;
+  font-weight: 300;
+  max-width: 500px;
+  margin-left: 70px;
+  margin-top: 44px;
+}
+
+
+.desc_geo span{
+  color: #708A58;
+}
+
+
+
+.town{
+  color: #2D4F2B;
+  font-size: 70px;
+  font-weight: 700;
+  margin-left: 45px;
+}
+
+.town:first-child{
+  margin-left: 0;
+}
+
+.row_towns{
+  display: flex;
+}
+
+.partners{
+  margin-top: 80px;
+}
+
+.other_text{
+  font-weight: 300;
+  font-size: 60px;
+  color: rgba(0, 0, 0, 0.67);
+text-align: right;
+  margin-top: 30px;
+}
+
+
+.mainpart_geo{
+  display: flex;
+  margin-top: 80px;
+}
+
+
+.title_text_partners{
+  display: flex;
+  position: relative;
+  margin-top: 60px;
+  margin-bottom: 50px;
+}
+
+
+.geography{
+    overflow: hidden;
+}
+
+
+.partners_title1{
+  font-size: 80px;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+
+.partners_title2{
+  font-size: 80px;
+  font-weight: 600;
+  margin-left: 15px;
+}
+
+.partners_title2:before{
+  content: url('/images/circle_partners.svg');
+  position: absolute;
+  top: -32%;
+  left: 35%;
+  z-index: -1;
+}
+
+.cards_partners{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 68px 35px;
+  margin-top: 120px;
+  padding-bottom: 90px;
+}
+
+.card_partner{
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  height: 163px;
+  width: 350px;
+}
+
+.desc_partners{
+  font-weight: 300;
+  font-size: 60px;
+  color: rgba(0, 0, 0, 0.57);
+text-align: right;}
