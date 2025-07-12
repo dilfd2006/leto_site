@@ -8,16 +8,19 @@
     <link rel="stylesheet" href="css/styles.css">
 	<script src="https://assets.codepen.io/16327/SplitText3.min.js"></script>
 	<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
-<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
     <script src="js/index.js" defer></script>
 </head>
 <body>
 <header class="header">
 	<nav class="navigation_header">
 		<div class="container">
-		<a href="#"><img src="images/logo.svg" alt=""></a>
+		<img src="images/logo.svg" alt="">
 		<div class="contacts_header">
 			<a href="" class="place_header"><img src="images/location_icon.svg" alt=""><p class="location_nav">Казань</p></a>
 			<a href="tel:+79179236861" class="phone_nav">+79179236861</a>
@@ -57,7 +60,7 @@
 </section>
 <section class="whyus">
 	<div class="container">
-		<div class="title_text_whyus">
+	<div class="title_text_whyus">
 		<h1 class="whyus_title1">ПОЧЕМУ</h1><h1 class="whyus_title2">мы?</h1>
 	</div>
 	<div class="table_rows">
@@ -87,10 +90,24 @@
       <div class="title_text_offer">
 		<h1 class="offer_title1">что мы</h1><h1 class="offer_title2">ПРЕДЛАГАЕМ?</h1>
 	</div>
+	 <section id="panels">
+    <div id="panels-container">
+      <div class="panel" id="panel1">
 	<div class="card_offer">
 		<p class="numbertext_offercard">01//</p>
-		<p class="desc_offercard">помогаем с оформлением ипотеки</p>
+		<p class="desc_offercard">помогаем по подряду индивидуальных жилых домов с аккредитованными в банках застройщиками</p>
 	</div>
+</div>
+      <div class="panel" id="panel2"><div class="card_offer">
+		<p class="numbertext_offercard">02//</p>
+		<p class="desc_offercard">помогаем по оформлению и узаконению жилых и не жилых зданий и помещений</p>
+	</div></div>
+      <div class="panel" id="panel3"><div class="card_offer">
+		<p class="numbertext_offercard">03//</p>
+		<p class="desc_offercard">помогаем в одобрении ипотеки</p>
+	</div></div>
+    </div>
+  </section>
 	</div>
 </section>
 <section class="geography">
@@ -120,6 +137,61 @@
 		<img src="/images/map_russia.png" alt="">
 	</div>
     </div>
+	</div>
+</section>
+<section class="our_team">
+	<div class="container">
+      <div class="title_text_ourteam">
+		<h1 class="ourteam_title1">наша</h1><h1 class="ourteam_title2">КОМАНДА</h1>
+	</div>
+	<div class="table_rows_team">
+		<div class="first_card_team card_team">
+			<img src="/images/photo_ourteam.png" alt="">
+			<div class="text_card_ourteam">
+				<p class="name_teamcard">Лейсан</p>
+				<a class="phone_teamcard" href="tel:89872160957">+7 (987) 216 09 57</a>
+			</div>
+			<div class="minicard first_minicard hover_card">
+				<img src="/images/photo_ourteam.png" alt="">
+				 <div class="card_overlay">
+					<div class="overlay_text">
+					<div class="text_card_ourteam">
+						<p class="name_teamcard">Лейсан</p>
+						<a class="phone_teamcard" href="tel:89872160957">+7 (987) 216 09 57</a>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="second_card_team card_team">
+			<img src="/images/photo_ourteam.png" alt="">
+			<div class="text_card_ourteam">
+				<p class="name_teamcard">Екатерина</p>
+				<a class="phone_teamcard" href="tel:89179236861">+7 (917) 923 68 61</a>
+			</div>
+		</div>
+		<div class="third_card_team card_team">
+			<div class="minicard second_minicard hover_card">
+				<img src="/images/photo_ourteam.png" alt="">
+				 <div class="card_overlay">
+					<div class="overlay_text">
+					<div class="text_card_ourteam">
+						<p class="name_teamcard">Лейсан</p>
+						<a class="phone_teamcard" href="tel:89872160957">+7 (987) 216 09 57</a>
+					</div>
+					</div>
+				</div>
+			</div>
+			<img src="/images/photo_ourteam.png" alt="">
+			<div class="text_card_ourteam">
+				<p class="name_teamcard">Светлана</p>
+				<a class="phone_teamcard" href="tel:89372859593">+7 (937) 285 95 93</a>
+			</div>
+		</div>
+		<div class="desc_text_team">
+		<p class="under_team_desc">наши <span>специалисты</span> обладают огромным опытом с юридическим образованием</p>
+		</div>
+	</div>
 	</div>
 </section>
 <section class="feedback">
