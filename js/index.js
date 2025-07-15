@@ -167,6 +167,6 @@ tween = gsap.to(panels, {
 			inertia: false,
 			duration: {min: 0.1, max: 0.1}
 		},
-  end: () => "+=" + (panelsContainer.offsetWidth - innerWidth + window.innerWidth)
+end: () => "+=" + (panelsContainer.scrollWidth - innerWidth)
 	}
 });

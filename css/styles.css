@@ -43,7 +43,7 @@ a {
 	position: absolute;
 	width: 14rem;
 	height: 18rem;
-	top: 40%;
+	top: 33%;
 	left: 45%;
 	transform: translate(-50%, -50%);
 }
@@ -71,8 +71,8 @@ a {
 
 .actions {
 	position: absolute;
-	bottom: 15px;
 	left: 50%;
+  bottom: 8%;
 	transform: translateX(-50%);
 }
 
@@ -161,13 +161,18 @@ button:hover {
 }
 
 .header::before {
-  content: url('../images/header_bg.png');
+  content: '';
   position: absolute;
-  width: 100%;
   top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  background-image: url('../images/header_bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   z-index: -1;
 }
-
 .navigation_header .container{
   display: flex;
   justify-content: space-between;
@@ -263,7 +268,12 @@ button:hover {
 
 .container_new {
   width: 90vw;
-  margin-top: 30vh;
+  margin: 0 auto 30vh;
+}
+
+.container_new:last-child{
+  width: 90vw;
+  margin: 0 auto 10vh;
 }
 
 .line {
@@ -332,13 +342,9 @@ button:hover {
   font-size: 100px;
   margin-bottom: 50px;
   color: #FFB823;
+  position: relative;
 }
 
-.split_new::before{
-  content: url('/images/circle_aboutus.svg');
-  position: absolute;
-  right: 12%;
-}
 
 .fifth_text1{
   font-size: 57px;
@@ -462,8 +468,7 @@ button:hover {
 }
 
 .title_text_ourteam{
-  position: absolute;
-  right: 5%;
+  text-align: right;
 }
 
 .title_card{
@@ -877,7 +882,8 @@ a > img:hover{
 
  #panels-container {
       display: flex;
-      width: 400vw;
+  width: max-content; 
+  gap: 50px; 
     }
 
   .panel {
@@ -885,7 +891,10 @@ a > img:hover{
       border-radius: 25px;
       height: 100vh;
       flex-shrink: 0;
-      margin-left: 50px;
+    }
+
+    .panel:last-child{
+       width: 5vw;
     }
 
 
