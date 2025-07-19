@@ -260,44 +260,10 @@ button:hover {
 
 .aboutus .container{
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   flex-direction: column;
   background: #fff;
-}
-
-.container_new {
-  width: 90vw;
-  margin: 0 auto 30vh;
-}
-
-.container_new:last-child{
-  width: 90vw;
-  margin: 0 auto 10vh;
-}
-
-.line {
-  display: block;
-  overflow: hidden;
-}
-
-.split {
-  opacity: 0;
-  text-align: center;
-  color: rgb(14, 16, 15);
-  font-size: 2rem;
-  will-change: transform;
-  color: #0e100f;
-  display: flex;
-  align-items: center;
-}
-
-.split * {
-  will-change: transform;
-}
-
-.spacer {
-  height: 30vh;
 }
 
 .first_text{
@@ -322,17 +288,25 @@ button:hover {
 .third_text{
   font-weight: 700;
   font-size: 85px;
-    position: relative;
 }
 
-.third1{
-  margin-bottom: 250px;
-  margin-left: 44px;
+.container_new{
+  display: flex;
+  align-items: center;
+  margin-top: 100px;
 }
 
-.third2{
-  margin-top: 170px;
+.container_new:last-child{
+  margin-bottom: 100px;
 }
+
+.photo_second{
+  height: 400px;
+}
+.text_column_about{
+  margin-left: 50px;
+}
+
 .text2{
   margin-left: 15px;
 }
@@ -340,7 +314,6 @@ button:hover {
 .forth_text{
   font-weight: 300;
   font-size: 100px;
-  margin-bottom: 50px;
   color: #FFB823;
   position: relative;
 }
@@ -350,9 +323,6 @@ button:hover {
   font-size: 57px;
   color: rgba(0, 0, 0, 0.67);
   font-weight: 400;
-}
-.split_new{
-  position: relative;
 }
 .fifth_text2{
   color: #2D4F2B;
@@ -377,19 +347,6 @@ button:hover {
   font-weight: 300;
   font-size: 80px;
   margin-left: 10px;
-}
-
-.container_new:first-child {
-  margin-top: 100px;
-}
-
-.container_new:last-child {
-  margin-bottom: 100px;
-}
-
-
-.third1::before{
-   content: url
 }
 
 .card{
@@ -843,6 +800,11 @@ a > img:hover{
   max-width:270px;
 }
 
+.split_new img{
+  width: 500px;
+  height: 300px;
+}
+
 .first_minicard{
   margin-top: 36px;
 }
@@ -901,3 +863,16 @@ a > img:hover{
     .panel:first-child{
       margin-left: 0;
     }
+
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
+@media (max-width: 575px) {
+    .container {
+        padding: 0 15px;
+    }
+  }

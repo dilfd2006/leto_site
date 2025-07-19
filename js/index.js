@@ -1,4 +1,4 @@
-gsap.registerPlugin(ScrollTrigger); // Можно удалить, если ScrollTrigger вообще не нужен
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const spacing = 0.1;
 const snap = gsap.utils.snap(spacing);
@@ -96,39 +96,6 @@ function buildSeamlessLoop(items, spacing) {
   return seamlessLoop;
 }
 
-
-gsap.registerPlugin(SplitText, ScrollTrigger);
-
-gsap.set(".split", { opacity: 1 });
-
-document.fonts.ready.then(() => {
-  const blocks = gsap.utils.toArray(".container_new");
-
-  blocks.forEach((block) => {
-    const text = block.querySelector(".split");
-
-    const split = new SplitText(text, {
-      type: "lines",
-      linesClass: "line"
-    });
-
-    gsap.from(split.lines, {
-      yPercent: 100,
-      opacity: 0,
-      stagger: 0.1,
-      ease: "power3.out",
-      scrollTrigger: {
-  trigger: block,
-  start: "top 80%",
-  end: "bottom center",
-  scrub: true
-}
-    });
-  });
-});
-
-
-gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
 let panelsSection = document.querySelector("#panels"),
 	panelsContainer = document.querySelector("#panels-container"),
