@@ -368,9 +368,9 @@ button:hover {
   align-items: center;
   justify-content: center;
   border-radius: 16px;
-  max-width: 358px;
+  width: 358px;
+  height: 700px;
 }
-
 
 .text_card_ourteam{
   background-color: #FFF0CA;
@@ -463,10 +463,10 @@ button:hover {
 }
 
 .second_card_team{
-  margin-top: 213px;
+  margin-top: 100px;
 }
 .third_card_team{
-  margin-top: 160px;
+  margin-top: 150px;
 }
 .part_team{
   display: flex;
@@ -802,7 +802,7 @@ a > img:hover{
 
 .minicard img{
   border-radius: 16px;
-  max-width:270px;
+  max-width: 270px;
 }
 
 .split_new img{
