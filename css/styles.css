@@ -170,7 +170,7 @@ button:hover {
   background-image: url('../images/photo_main.webp');
   background-size: cover;
   background-repeat: no-repeat;
-  filter:brightness(50%);
+  filter:brightness(40%);
   background-position: center;
   z-index: -1;
 }
@@ -874,10 +874,174 @@ a > img:hover{
     .container {
         max-width: 540px;
     }
+    .title_header{
+      font-size: 50px;
+    }
+
+    .desc_header{
+      font-size: 40px;
+    }
+
+    .logoo{
+       max-width: 200px;
+    }
+
+    .first_text, .second_text1, .second_text2, .third_text{
+      font-size: 65px;
+    }
+
+    .photo_second{
+      max-width: 350px;
+      height: 300px;
+    }
+
+    .container_new{
+      margin-top: 60px;
+    }
+   .forth_text{
+    font-size: 80px;
+   }
+
+   .fifth_text1{
+    font-size: 28px;
+   }
+
+   .fifth_text2{
+    font-size: 41px;
+    margin-left: 10px;
+   }
+
+   .container_new:last-child {
+    margin-bottom: 60px;
 }
 
-@media (max-width: 575px) {
+.whyus_title1{
+  font-size: 70px;
+}
+
+.whyus_title2{
+  font-size: 50px;
+}
+
+.title_card {
+    font-size: 60px;
+  }
+
+  .desc_card{
+    font-size: 50px;
+  }
+.text_card:before{
+  content: '';
+  background: url('../images/circle_whyus.svg') no-repeat center top/cover;
+  width: 165px;
+  height: 165px;
+}
+  .card{
+    align-items: center;
+  }
+  .table_rows{
+    gap: 80px;
+    margin-top: 50px;
+  }
+
+  .card{
+    align-items: start;
+  }
+}
+
+
+@media (max-width: 450px) {
     .container {
         padding: 0 15px;
     }
+   .contacts_header{
+    display: none;
+   }
+
+   .navigation_header .container {
+    justify-content: center;
+}
+
+   .img_logo{
+    width: 200px;
+    height: 200px;
+   }
+     .title_header{
+      font-size: 35px;
+    }
+    .text_header{
+      margin-left: 20px;
+    }
+
+    .desc_header{
+      font-size: 25px;
+    }
+
+    .logoo{
+       max-width: 170px;
+    }
+
+    .first_text, .second_text1, .second_text2, .third_text{
+      font-size: 40px;
+    }
+
+    .photo_second{
+      max-width: 200px;
+      height: 200px;
+    }
+   .second_text2{
+    margin-left: 15px;
+   }
+    .container_new{
+      margin-top: 40px;
+    }
+   .forth_text{
+    font-size: 60px;
+   }
+
+   .fifth_text1{
+    font-size: 20px;
+   }
+
+   .fifth_text2{
+    font-size: 32px;
+    margin-left: 10px;
+   }
+
+   .container_new:last-child {
+    margin-bottom: 40px;
+}
+
+.whyus_title1{
+  font-size: 50px;
+}
+
+.whyus_title2{
+  font-size: 40px;
+}
+
+.title_card {
+    font-size: 40px;
+  }
+
+  .desc_card{
+    font-size: 30px;
+  }
+.text_card:before{
+  content: '';
+  background: url('../images/circle_whyus.svg') no-repeat center top/cover;
+  width: 100px;
+  height: 100px;
+}
+  .card{
+    align-items: center;
+  }
+  .table_rows{
+    gap: 60px;
+    margin-top: 40px;
+  }
+
+  .card{
+    align-items: start;
+  }
   }
