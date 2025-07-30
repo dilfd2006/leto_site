@@ -70,7 +70,9 @@ a {
   overflow-y: auto;   
   overflow-x: hidden;
 }
-
+.our_team_mobile{
+  display: none;
+}
 .actions {
 	position: absolute;
 	left: 50%;
@@ -774,7 +776,7 @@ a > img:hover{
 .ourteam_title2{
   font-weight: 600;
   font-size: 80px;
-  color: #2D4F2B;
+  color: #708A58;
   margin-left: 15px;
 }
 
@@ -791,8 +793,9 @@ a > img:hover{
   max-width: 720px;
 }
 .desc_text_team{
-  position: absolute;
-  bottom: 0;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 5px;
 }
 .under_team_desc span{
   color: #708A58;
@@ -921,13 +924,48 @@ iframe{
     font-size: 41px;
     margin-left: 10px;
    }
+   .card_offer{
+      width: 100%;
+      height: 400px;
+    }
 
+     .card_offer::before{
+      content: '';
+    }
+.panel_mobile{
+  margin-bottom: 50px;
+}
    .container_new:last-child {
     margin-bottom: 60px;
 }
 
 .whyus_title1{
   font-size: 70px;
+}
+iframe{
+  display: none;
+}
+.gallery{
+  height: 700px;
+}
+.our_team_mobile{
+  margin-top: 60px;
+}
+.table_rows_team_mobile{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 1700px;
+}
+.feedback{
+  margin-top: 70px;
+}
+.cards{
+  left: 37%;
+}
+.textpart_footer{
+  margin-left: 0;
 }
 
 .whyus_title2{
@@ -947,6 +985,13 @@ iframe{
   width: 165px;
   height: 165px;
 }
+.our_team_mobile{
+  display: block;
+}
+
+.our_team{
+  display: none;
+}
   .card{
     align-items: center;
   }
@@ -954,11 +999,22 @@ iframe{
     gap: 80px;
     margin-top: 50px;
   }
-
+.whatweoffer{
+  display: none;
+}
+.whatweoffer_phone{
+  display: block;
+}
   .card{
     align-items: start;
   }
 
+  .image_mainpart_geo img{
+    display: none;
+     }
+ .image_mainpart_geo{
+    display: none;
+     }
   .desc_offercard{
     font-size: 30px;
   }
@@ -976,6 +1032,18 @@ iframe{
    .contacts_header{
     display: none;
    }
+    .card_offer{
+      width: 100%;
+      height: 180px;
+    }
+    .image_mainpart_geo{
+      display: none;
+    }
+
+    .mainpart_geo{
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
 
    .navigation_header .container {
     justify-content: center;
@@ -1114,12 +1182,31 @@ footer{
   .card_offer:before {
   content: '';
   }
+  .partners{
+    margin-top: 0px;
+  }
+
+  .gallery{
+    height: 550px;
+  }
+
 
   .text_column_about{
     margin-left: 30px;
   }
 
-
+  .cards li {
+    padding: 20px 25px;
+    top: -15%;
+  }
+.title_text_partners{
+  justify-content: center;
+}
+.cards{
+  left: 34%;
+  height: 14rem;
+  width: 14rem;
+}
   .desc_geo{
     font-size: 30px;
     max-width: 200px;
@@ -1164,5 +1251,20 @@ footer{
 }
 .title_text_offer{
   margin-bottom: 50px;
+}
+.our_team_mobile{
+  display: block;
+}
+
+.our_team{
+  display: none;
+}
+
+.table_rows_team_mobile{
+  display: flex;
+  flex-direction: column;
+  height: 1500px;
+  justify-content: center;
+  align-items: center;
 }
   }
