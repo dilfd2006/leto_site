@@ -67,6 +67,8 @@ a {
   height: 200px;
   border-radius: 18px;
   padding: 18px;
+  overflow-y: auto;   
+  overflow-x: hidden;
 }
 
 .actions {
@@ -138,9 +140,10 @@ button:hover {
 
 .feedback_text{
   text-align: left;
-  font-size: 18px;
-  font-weight: 300;
+  font-size: 14px;
+  font-weight: 300;  
 }
+
 
 .social_networks{
   display: flex;
@@ -814,6 +817,10 @@ a > img:hover{
   margin-top: 36px;
 }
 
+.whatweoffer_phone{
+  display: none;
+}
+
 .second_minicard{
   margin-bottom: 36px;
 }
@@ -821,6 +828,10 @@ a > img:hover{
 .hover_card {
   position: relative;
   overflow: hidden;
+}
+iframe{
+  width: 520px;
+  height: 717px;
 }
 
 .card_overlay {
@@ -986,11 +997,11 @@ a > img:hover{
     }
 
     .logoo{
-       max-width: 170px;
+       max-width: 150px;
     }
 
     .first_text, .second_text1, .second_text2, .third_text{
-      font-size: 40px;
+      font-size: 35px;
     }
 
     .photo_second{
@@ -998,7 +1009,7 @@ a > img:hover{
       height: 200px;
     }
    .second_text2{
-    margin-left: 15px;
+    margin-left: 10px;
    }
     .container_new{
       margin-top: 40px;
@@ -1008,11 +1019,11 @@ a > img:hover{
    }
 
    .fifth_text1{
-    font-size: 20px;
+    font-size: 18px;
    }
 
    .fifth_text2{
-    font-size: 32px;
+    font-size: 25px;
     margin-left: 10px;
    }
 
@@ -1020,16 +1031,51 @@ a > img:hover{
     margin-bottom: 40px;
 }
 
-.whyus_title1{
+.whyus_title1, .feedback_title_secondpart, .partners_title1, .partners_title2, .offer_title2, .geo_title2, .ourteam_title2, .footer_title1, .footer_title2{
   font-size: 50px;
 }
 
-.whyus_title2{
+.feedback_title_secondpart{
+  margin-left: 100px;
+}
+footer{
+  margin-top: 0px;
+}
+.footer_title2{
+  margin-left: 140px;
+  margin-top: 10px;
+}
+.partners_title2::before{
+  content: '';
+}
+.time_footer{
+  font-size: 30px;
+}
+.textpart_footer{
+  margin-left: 0;
+}
+.cards_partners{
+  gap: 25px;
+}
+.desc_text_footer{
+  margin-top: 40px;
+}
+.address_footer_text, .link_contacts_footer{
+  font-size: 30px;
+}
+.whyus_title2, .feedback_title_firstpart, .offer_title1, .geo_title1, .ourteam_title1, .desc_partners{
   font-size: 40px;
+}
+.offer_title2{
+  margin-left: 40px;
+}
+.cards_partners{
+  margin-top: 30px;
+  padding-bottom: 30px;
 }
 
 .title_card {
-    font-size: 40px;
+    font-size: 37px;
   }
 
   .desc_card{
@@ -1054,14 +1100,69 @@ a > img:hover{
   }
 
   .desc_offercard{
-    font-size: 20px;
+    font-size: 15px;
+  }
+
+  .panel_mobile{
+    margin-bottom: 40px;
   }
 
   .numbertext_offercard{
-    font-size: 40px;
+    font-size: 30px;
     margin-bottom: 10px;
   }
   .card_offer:before {
   content: '';
   }
+
+  .text_column_about{
+    margin-left: 30px;
+  }
+
+
+  .desc_geo{
+    font-size: 30px;
+    max-width: 200px;
+    margin-left: 0px;
+    margin-top: 10px;
+  }
+  .towns_mainpart_geo{
+    margin-top: 20px;
+    margin-left: 100px;
+  }
+  .town{
+    font-size: 30px;
+    margin-left: 10px;
+  }
+    .our_team {
+      margin-top: 20px;
+    }
+  .other_text{
+    font-size: 30px;
+    margin-top: 10px;
+  }
+
+  .under_team_desc{
+    font-size: 30px;
+  }
+  .image_mainpart_geo img{
+    display: none;
+     }
+
+ iframe{
+  width: 0px;
+  height: 0px;
+}
+.main_part_footer{
+  flex-direction: column;
+}
+.whatweoffer{
+  display: none;
+}
+.whatweoffer_phone{
+  display: block;
+}
+.title_text_offer{
+  margin-bottom: 50px;
+}
   }
