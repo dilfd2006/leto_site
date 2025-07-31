@@ -793,6 +793,8 @@ a > img:hover{
   max-width: 720px;
 }
 .desc_text_team{
+  position: absolute;
+  bottom: 0;
   margin-top: 10px;
   margin-bottom: 20px;
   margin-left: 5px;
@@ -1168,7 +1170,8 @@ footer{
   }
 
   .desc_offercard{
-    font-size: 15px;
+    font-size: 18px;
+    width: 200px;
   }
 
   .panel_mobile{
@@ -1176,8 +1179,8 @@ footer{
   }
 
   .numbertext_offercard{
-    font-size: 30px;
-    margin-bottom: 10px;
+    font-size: 25px;
+    margin-bottom: 5px;
   }
   .card_offer:before {
   content: '';
@@ -1194,6 +1197,9 @@ footer{
   .text_column_about{
     margin-left: 30px;
   }
+  .desc_text_team{
+  position: relative;
+}
 
   .cards li {
     padding: 20px 25px;
@@ -1267,4 +1273,32 @@ footer{
   justify-content: center;
   align-items: center;
 }
+  }
+
+  @media (max-width: 390px){
+    .towns_mainpart_geo{
+      margin-left: 70px;
+    }
+    .other_text{
+      text-align: center;
+      margin-left: 130px;
+    }
+    .geo_title2{
+      margin-left: 7px;
+      font-size: 45px;
+    }
+    .cards{
+      left: 35.5%;
+    }
+    .cards li{
+      width: 320px;
+    }
+
+    .fifth_text1{
+      font-size: 18px;
+    }
+
+    .fifth_text2{
+      font-size: 18px;
+    }
   }
