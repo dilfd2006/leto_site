@@ -1,4 +1,4 @@
-gsap.registerPlugin(ScrollTrigger); // Можно удалить, если ScrollTrigger вообще не нужен
+gsap.registerPlugin(ScrollTrigger)
 
 const spacing = 0.1;
 const snap = gsap.utils.snap(spacing);
