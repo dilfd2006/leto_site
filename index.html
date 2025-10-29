@@ -6,27 +6,27 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Лето</title>
 	<link rel="stylesheet" href="fonts/Oswald/stylesheet.css">
-	<link rel="stylesheet" href="css/styles.css">
-	<!-- <script src="https://assets.codepen.io/16327/SplitText3.min.js"></script> -->
-	<script defer src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
-	<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
-	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
-	<script defer src="js/index.js"></script>
+	<link rel="stylesheet" href="css/styles.css?v=3">
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollToPlugin.min.js"></script>
+<script src="js/index.js?v=3" defer></script>
+</head>
+
 </head>
 
 <body>
 	<header class="header">
 		<nav class="navigation_header">
 			<div class="container">
-				<img src="images/logo.svg" alt="">
+				<img src="images/logo.svg" alt="" class="img_logo">
 				<div class="contacts_header">
-					<a href="" class="place_header"><img src="images/location_icon.svg" alt="">
+					<a href="#footer" class="place_header"><img src="images/location_icon.svg" alt="">
 						<p class="location_nav">Казань</p>
 					</a>
 					<a href="tel:+79179236861" class="phone_nav">+79179236861</a>
 					<div class="social_networks">
-						<a href=""><img src="images/whatsapp_icon.svg" alt=""></a>
+						<a href="https://wa.me/+79179236861"><img src="images/whatsapp_icon.svg" alt=""></a>
 						<a href="https://t.me/lyaysan_realtor"><img src="images/telegram_icon.svg" alt=""></a>
 					</div>
 				</div>
@@ -42,35 +42,22 @@
 	<section class="aboutus">
 		<div class="container">
 			<div class="container_new">
-				<div class="split"><img src="images/logo.svg" alt="">
+				<img src="images/logo.svg" alt="" class="logoo">
 					<h2 class="first_text">
-						- это когда...</h2>
-				</div>
-			</div>
-
-			<div class="container_new">
-				<div class="split">
+						- это когда...</h2> </div>
+				<div class="container_new">
 					<h2 class="second_text1">помочь</h2>
-					<h2 class="second_text2">продать</h2>
-				</div>
-			</div>
-
-			<div class="container_new">
-				<div class="split split_new"><img src="images/photo_aboutus.png" alt="" width="500px" height="300px">
+					<h2 class="second_text2">продать</h2></div>
+				<div class="container_new">
+                   <img src="images/about_photo.webp" class="photo_second" alt="">
+				   <div class="text_column_about">
 					<h2 class="third_text third1">купить</h2>
 					<h2 class="forth_text">или</h2>
-					<h2 class="third_text third2">сдать</h2>
-				</div>
-			</div>
-
-			<div class="container_new">
-				<div class="split">
-					<h2 class="fifth_text1">инвестировать</h2>
-					<h2 class="fifth_text1 text2">в недвижимость</h2>
-					<h2 class="fifth_text2">и не только</h2>
-				</div>
-			</div>
-		</div>
+					<h2 class="third_text third2">сдать</h2></div></div>
+				<div class="container_new">
+					<h2 class="fifth_text1">инвестировать в недвижимость</h2>
+					<h2 class="fifth_text2">и не только</h2></div>
+   </div>
 	</section>
 	<section class="whyus">
 		<div class="container">
@@ -128,7 +115,41 @@
 							<p class="desc_offercard">помогаем в одобрении ипотеки</p>
 						</div>
 					</div>
+					<div class="panel">
+						<div class="card_offer">
+						</div>
+					</div>
 				</div>
+			</section>
+		</div>
+	</section>
+	<section class="whatweoffer_phone">
+		<div class="container">
+			<div class="title_text_offer">
+				<h1 class="offer_title1">что мы</h1>
+				<h1 class="offer_title2">ПРЕДЛАГАЕМ?</h1>
+			</div>
+			<section id="panels_mobile">
+				<div class="panel_mobile" id="panel1">
+						<div class="card_offer">
+							<p class="numbertext_offercard">01//</p>
+							<p class="desc_offercard">помогаем по подряду индивидуальных жилых домов с аккредитованными
+								в банках застройщиками</p>
+						</div>
+				</div>
+				<div class="panel_mobile" id="panel2">
+						<div class="card_offer">
+							<p class="numbertext_offercard">02//</p>
+							<p class="desc_offercard">помогаем по оформлению и узаконению жилых и не жилых зданий и
+								помещений</p>
+						</div>
+				</div>
+				<div class="panel_mobile" id="panel3">
+					<div class="card_offer">
+							<p class="numbertext_offercard">03//</p>
+							<p class="desc_offercard">помогаем в одобрении ипотеки</p>
+					</div>
+			</div>
 			</section>
 		</div>
 	</section>
@@ -170,7 +191,7 @@
 			</div>
 			<div class="table_rows_team">
 				<div class="first_card_team card_team">
-					<img src="/images/photo_ourteam.png" alt="">
+					<img src="/images/leysan_mem.png" alt="">
 					<div class="text_card_ourteam">
 						<p class="name_teamcard">Лейсан</p>
 						<a class="phone_teamcard" href="tel:89872160957">+7 (987) 216 09 57</a>
@@ -188,7 +209,7 @@
 					</div>
 				</div>
 				<div class="second_card_team card_team">
-					<img src="/images/photo_ourteam.png" alt="">
+					<img src="/images/ekater_mem.png" alt="">
 					<div class="text_card_ourteam">
 						<p class="name_teamcard">Екатерина</p>
 						<a class="phone_teamcard" href="tel:89179236861">+7 (917) 923 68 61</a>
@@ -196,12 +217,12 @@
 				</div>
 				<div class="third_card_team card_team">
 					<div class="minicard second_minicard hover_card">
-						<img src="/images/photo_ourteam.png" alt="">
+						<img src="/images/regina_mem_new.png" alt="">
 						<div class="card_overlay">
 							<div class="overlay_text">
 								<div class="text_card_ourteam">
-									<p class="name_teamcard">Лейсан</p>
-									<a class="phone_teamcard" href="tel:89872160957">+7 (987) 216 09 57</a>
+									<p class="name_teamcard">Регина</p>
+									<a class="phone_teamcard" href="tel:8919685594">+7 (919) 685 594</a>
 								</div>
 							</div>
 						</div>
@@ -219,154 +240,71 @@
 			</div>
 		</div>
 	</section>
+	<section class="our_team_mobile">
+		<div class="container">
+			<div class="title_text_ourteam">
+				<h1 class="ourteam_title1">наша</h1>
+				<h1 class="ourteam_title2">КОМАНДА</h1>
+			</div>
+			<div class="table_rows_team_mobile">
+				<div class="card_team">
+					<img src="/images/leysan_mem.png" alt="">
+					<div class="text_card_ourteam">
+						<p class="name_teamcard">Лейсан</p>
+						<a class="phone_teamcard" href="tel:89872160957">+7 (987) 216 09 57</a>
+					</div>
+				</div>
+				<div class="card_team">
+					<img src="/images/ekater_mem.png" alt="">
+					<div class="text_card_ourteam">
+						<p class="name_teamcard">Екатерина</p>
+						<a class="phone_teamcard" href="tel:89179236861">+7 (917) 923 68 61</a>
+					</div>
+				</div>
+				<div class="card_team">
+					<img src="/images/photo_ourteam.png" alt="">
+					<div class="text_card_ourteam">
+						<p class="name_teamcard">Светлана</p>
+						<a class="phone_teamcard" href="tel:89372859593">+7 (937) 285 95 93</a>
+					</div>
+				</div>
+			</div>
+			<div class="desc_text_team">
+					<p class="under_team_desc">наши <span>специалисты</span> обладают огромным опытом с юридическим
+						образованием</p>
+				</div>
+		</div>
+	</section>
 	<section class="feedback">
 		<div class="container">
 			<h1 class="feedback_title_firstpart">отзывы</h1>
 			<h1 class="feedback_title_secondpart">О НАС</h1>
-			<div class="gallery">
-				<ul class="cards">
-					<li>
-						<div class="container_inside_card">
-							<p class="feedback_text">Хочу выразить благодарность...</p>
+
+		<!-- User comment list and modal trigger -->
+		<div class="feedback_user" id="feedback_user">
+			<ul id="userComments" class="comment-list" aria-live="polite"></ul>
+			<button type="button" class="add-comment-btn" data-open-comment-modal>Добавить отзыв</button>
+		</div>
+		<div class="comment-modal" id="commentModal" aria-hidden="true">
+			<div class="comment-modal__backdrop" data-modal-close></div>
+			<div class="comment-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="commentModalTitle">
+				<button type="button" class="comment-modal__close" data-modal-close aria-label="Закрыть форму">×</button>
+				<h2 class="comment-modal__title" id="commentModalTitle">Оставить отзыв</h2>
+				<form id="commentForm" class="comment-form">
+					<div class="comment-form-inputs">
+						<div class="comment-form-field">
+							<label for="commentName" class="visually-hidden">Имя</label>
+							<input type="text" id="commentName" name="name" placeholder="Ваше имя" required>
 						</div>
-						<div class="data_feebacker_card">
-							<div class="img_container_card">
-								<img src="images/avatar_card.svg" alt="">
-							</div>
-							<div class="name_feedbacker_card">
-								<p class="name_feedbacker">Дилия</p>
-								<p class="surname_feebacker">Файзуллина</p>
-							</div>
-							<div class="date_feedback_card">
-								07.07.2025
-							</div>
+						<div class="comment-form-field">
+							<label for="commentText" class="visually-hidden">Комментарий</label>
+							<textarea id="commentText" name="comment" placeholder="Ваш отзыв" rows="4" required></textarea>
 						</div>
-					</li>
-					<li>
-						<div class="container_inside_card">
-							<p class="feedback_text">Хочу выразить благодарность...</p>
-						</div>
-						<div class="data_feebacker_card">
-							<div class="img_container_card">
-								<img src="images/avatar_card.svg" alt="">
-							</div>
-							<div class="name_feedbacker_card">
-								<p class="name_feedbacker">Дилия</p>
-								<p class="surname_feebacker">Файзуллина</p>
-							</div>
-							<div class="date_feedback_card">
-								07.07.2025
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="container_inside_card">
-							<p class="feedback_text">Хочу выразить благодарность...</p>
-						</div>
-						<div class="data_feebacker_card">
-							<div class="img_container_card">
-								<img src="images/avatar_card.svg" alt="">
-							</div>
-							<div class="name_feedbacker_card">
-								<p class="name_feedbacker">Дилия</p>
-								<p class="surname_feebacker">Файзуллина</p>
-							</div>
-							<div class="date_feedback_card">
-								07.07.2025
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="container_inside_card">
-							<p class="feedback_text">Хочу выразить благодарность...</p>
-						</div>
-						<div class="data_feebacker_card">
-							<div class="img_container_card">
-								<img src="images/avatar_card.svg" alt="">
-							</div>
-							<div class="name_feedbacker_card">
-								<p class="name_feedbacker">Дилия</p>
-								<p class="surname_feebacker">Файзуллина</p>
-							</div>
-							<div class="date_feedback_card">
-								07.07.2025
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="container_inside_card">
-							<p class="feedback_text">Хочу выразить благодарность...</p>
-						</div>
-						<div class="data_feebacker_card">
-							<div class="img_container_card">
-								<img src="images/avatar_card.svg" alt="">
-							</div>
-							<div class="name_feedbacker_card">
-								<p class="name_feedbacker">Дилия</p>
-								<p class="surname_feebacker">Файзуллина</p>
-							</div>
-							<div class="date_feedback_card">
-								07.07.2025
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="container_inside_card">
-							<p class="feedback_text">Хочу выразить благодарность...</p>
-						</div>
-						<div class="data_feebacker_card">
-							<div class="img_container_card">
-								<img src="images/avatar_card.svg" alt="">
-							</div>
-							<div class="name_feedbacker_card">
-								<p class="name_feedbacker">Дилия</p>
-								<p class="surname_feebacker">Файзуллина</p>
-							</div>
-							<div class="date_feedback_card">
-								07.07.2025
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="container_inside_card">
-							<p class="feedback_text">Хочу выразить благодарность...</p>
-						</div>
-						<div class="data_feebacker_card">
-							<div class="img_container_card">
-								<img src="images/avatar_card.svg" alt="">
-							</div>
-							<div class="name_feedbacker_card">
-								<p class="name_feedbacker">Дилия</p>
-								<p class="surname_feebacker">Файзуллина</p>
-							</div>
-							<div class="date_feedback_card">
-								07.07.2025
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="container_inside_card">
-							<p class="feedback_text">Хочу выразить благодарность...</p>
-						</div>
-						<div class="data_feebacker_card">
-							<div class="img_container_card">
-								<img src="images/avatar_card.svg" alt="">
-							</div>
-							<div class="name_feedbacker_card">
-								<p class="name_feedbacker">Дилия</p>
-								<p class="surname_feebacker">Файзуллина</p>
-							</div>
-							<div class="date_feedback_card">
-								07.07.2025
-							</div>
-						</div>
-					</li>
-				</ul>
-				<div class="actions">
-					<button class="prev">&LeftArrow;</button>
-					<button class="next">&RightArrow;</button>
-				</div>
+					</div>
+					<button type="submit" class="submit-comment">Отправить</button>
+				</form>
 			</div>
+		</div>
 		</div>
 	</section>
 	<section class="partners">
@@ -398,13 +336,12 @@
 			<p class="desc_partners">уже сотрудничают с нами</p>
 		</div>
 	</section>
-	<footer>
+	<footer id="footer">
 		<div class="container">
 			<div class="main_part_footer">
 				<div class="mappart_footer">
 					<iframe
-						src="https://yandex.ru/map-widget/v1/?um=constructor%3Ae6127f71d6b882e61556518033d4436a510a87ee5cc75e6dcec0a0b75a2b4908&amp;source=constructor"
-						width="520" height="717" frameborder="0"></iframe>
+						src="https://yandex.ru/map-widget/v1/?um=constructor%3Ae6127f71d6b882e61556518033d4436a510a87ee5cc75e6dcec0a0b75a2b4908&amp;source=constructor" frameborder="0"></iframe>
 				</div>
 				<div class="textpart_footer">
 					<div class="title_text_footer">
@@ -413,7 +350,7 @@
 					</div>
 					<div class="desc_text_footer">
 						<p class="footer_text">Контакты:</p>
-						<a href="tel:89179236861" class="link_contacts_footer">+7 (917) 923 68 61</a>
+						<a href="tel:+79179236861" class="link_contacts_footer">+7 (917) 923 68 61</a>
 						<div class="secondpart_contacts">
 							<p class="footer_text">Главный офис:</p>
 							<p class="address_footer_text">Тверская улица, 3, Казань, Республика Татарстан (Татарстан),
@@ -422,7 +359,7 @@
 						<div class="time_contacts">
 							<p class="time_footer">Круглосуточно</p>
 							<div class="social_networks">
-								<a href=""><img src="images/whatsapp_icon.svg" alt=""></a>
+								<a href="https://wa.me/+79179236861"><img src="images/whatsapp_icon.svg" alt=""></a>
 								<a href="https://t.me/lyaysan_realtor"><img src="images/telegram_icon.svg" alt=""></a>
 							</div>
 						</div>
