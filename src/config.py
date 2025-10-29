@@ -37,6 +37,8 @@ class DatabaseSettings(BaseSettings):
 class Settings(BaseSettings):
     database: DatabaseSettings = DatabaseSettings()
 
+    TOKEN: str = Field(default="invalid_token")
+
     model_config = SettingsConfigDict(
         env_file=str(PROJECT_ROOT / ".env"),
         env_file_encoding="utf-8",
