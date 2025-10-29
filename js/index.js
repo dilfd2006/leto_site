@@ -41,9 +41,20 @@ end: () => "+=" + (panelsContainer.scrollWidth - innerWidth)
 	}
 });
 
-// --- Comments widget: save to localStorage and render on page ---
+// --- Comments widget: sync with backend API ---
 (function() {
   const STORAGE_KEY = 'site_comments_v1';
+  const API_ENDPOINTS = {
+    list: '/api/feedback/all',
+    create: '/api/feedback/'
+  };
+
+  let listEl = null;
+  let statusEl = null;
+  let submitBtn = null;
+  let modalEl = null;
+  let lastFocusedEl = null;
+  let commentsCache = [];
 
   function escapeHtml(str) {
     return String(str)
@@ -54,33 +65,86 @@ end: () => "+=" + (panelsContainer.scrollWidth - innerWidth)
       .replace(/'/g, '&#39;');
   }
 
-  function loadComments() {
+  function coerceDate(value) {
+    if (!value) return null;
+    if (value instanceof Date) {
+      return Number.isNaN(value.getTime()) ? null : value;
+    }
+    if (typeof value === 'number') {
+      const byNumber = new Date(value);
+      return Number.isNaN(byNumber.getTime()) ? null : byNumber;
+    }
+    if (typeof value === 'string') {
+      const trimmed = value.trim();
+      if (!trimmed) return null;
+      const parsed = Date.parse(trimmed);
+      if (!Number.isNaN(parsed)) {
+        return new Date(parsed);
+      }
+      const match = trimmed.match(/^(\d{1,2})\.(\d{1,2})\.(\d{2,4})$/);
+      if (match) {
+        const [ , d, m, y ] = match;
+        const year = Number(y.length === 2 ? `20${y}` : y);
+        const dateFromParts = new Date(year, Number(m) - 1, Number(d));
+        return Number.isNaN(dateFromParts.getTime()) ? null : dateFromParts;
+      }
+    }
+    return null;
+  }
+
+  function normalizeComment(raw) {
+    if (!raw || typeof raw !== 'object') return null;
+    const nameSource = raw.name ?? raw.userName ?? raw.username ?? raw.author ?? raw.fullName ?? '';
+    const textSource = raw.comment ?? raw.text ?? raw.message ?? raw.body ?? '';
+    const dateSource = raw.createdAt ?? raw.created_at ?? raw.created ?? raw.date ?? raw.updatedAt ?? raw.timestamp;
+    const dateObj = coerceDate(dateSource);
+    const timestamp = dateObj ? dateObj.getTime() : (typeof raw.timestamp === 'number' ? raw.timestamp : 0);
+    const dateDisplay = dateObj ? dateObj.toLocaleDateString('ru-RU') : (typeof raw.date === 'string' ? raw.date : '');
+
+    return {
+      id: raw.id ?? raw._id ?? null,
+      name: String(nameSource || 'Аноним').trim() || 'Аноним',
+      text: String(textSource || ''),
+      createdAt: dateObj ? dateObj.toISOString() : (typeof dateSource === 'string' ? dateSource : null),
+      timestamp,
+      dateDisplay
+    };
+  }
+
+  function loadCommentsBackup() {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
-      return raw ? JSON.parse(raw) : [];
-    } catch (e) {
-      console.error('Failed to load comments', e);
+      if (!raw) return [];
+      const parsed = JSON.parse(raw);
+      if (!Array.isArray(parsed)) return [];
+      return parsed.map(normalizeComment).filter(Boolean);
+    } catch (error) {
+      console.error('Failed to load comments backup', error);
       return [];
     }
   }
 
-  function saveComments(comments) {
+  function saveCommentsBackup(comments) {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(comments));
-    } catch (e) {
-      console.error('Failed to save comments', e);
+    } catch (error) {
+      console.error('Failed to save comments backup', error);
     }
+  }
+
+  function commentTimestamp(comment) {
+    return Number(comment?.timestamp) || 0;
   }
 
   function renderCommentItem(comment) {
     const li = document.createElement('li');
     li.className = 'comment-item';
     const name = escapeHtml(comment.name || 'Аноним');
-    const text = escapeHtml(comment.text || '');
-    const date = escapeHtml(comment.date || '');
+    const safeText = escapeHtml(comment.text || '').replace(/\n/g, '<br>');
+    const date = escapeHtml(comment.dateDisplay || '');
     li.innerHTML = `
       <div class="comment-body">
-        <p class="comment-text">${text}</p>
+        <p class="comment-text">${safeText}</p>
       </div>
       <div class="comment-meta">
         <div class="comment-avatar">
@@ -96,91 +160,168 @@ end: () => "+=" + (panelsContainer.scrollWidth - innerWidth)
     return li;
   }
 
-  function commentTimestamp(comment) {
-    if (!comment) return 0;
-    if (comment.createdAt) {
-      const parsed = Date.parse(comment.createdAt);
-      if (!Number.isNaN(parsed)) return parsed;
-    }
-    if (comment.date) {
-      const parts = comment.date.split('.');
-      if (parts.length === 3) {
-        const [day, month, year] = parts.map(Number);
-        const fallback = new Date(year, (month || 1) - 1, day || 1).getTime();
-        if (!Number.isNaN(fallback)) return fallback;
-      }
-    }
-    return 0;
-  }
-
   function renderAll() {
-    const list = document.getElementById('userComments');
-    if (!list) return;
-    list.innerHTML = '';
-    const comments = loadComments();
-    comments
+    if (!listEl) return;
+    listEl.innerHTML = '';
+
+    if (!commentsCache.length) {
+      const placeholder = document.createElement('li');
+      placeholder.className = 'comment-item comment-item--empty';
+      placeholder.innerHTML = `
+        <div class="comment-body">
+          <p class="comment-text">Пока нет отзывов. Будьте первым, кто поделится впечатлением!</p>
+        </div>`;
+      listEl.appendChild(placeholder);
+      return;
+    }
+
+    commentsCache
       .slice()
       .sort((a, b) => commentTimestamp(b) - commentTimestamp(a))
-      .forEach(c => list.appendChild(renderCommentItem(c)));
-    list.scrollLeft = 0;
+      .forEach(c => listEl.appendChild(renderCommentItem(c)));
+    listEl.scrollLeft = 0;
   }
 
-  function addComment(name, text) {
-    const comments = loadComments();
-    const now = new Date();
-    const entry = {
+  function ensureStatusElement() {
+    if (statusEl) return statusEl;
+    const container = document.getElementById('feedback_user');
+    if (!container) return null;
+    statusEl = document.createElement('p');
+    statusEl.className = 'comment-status-message';
+    statusEl.setAttribute('role', 'status');
+    statusEl.style.margin = '0';
+    statusEl.style.fontSize = '16px';
+    statusEl.style.display = 'none';
+    const trigger = container.querySelector('.add-comment-btn');
+    container.insertBefore(statusEl, trigger || null);
+    return statusEl;
+  }
+
+  function setStatus(message, type = 'info') {
+    const el = ensureStatusElement();
+    if (!el) return;
+    if (!message) {
+      el.textContent = '';
+      el.style.display = 'none';
+      return;
+    }
+    el.textContent = message;
+    el.style.display = 'block';
+    switch (type) {
+      case 'error':
+        el.style.color = '#B3261E';
+        break;
+      case 'success':
+        el.style.color = '#2D4F2B';
+        break;
+      default:
+        el.style.color = '#1d1d1d';
+    }
+  }
+
+  async function fetchComments(options = {}) {
+    const { showLoading = true } = options;
+    if (!listEl) return false;
+    if (showLoading) {
+      setStatus('Загружаем отзывы...', 'info');
+    }
+    try {
+      const response = await fetch(API_ENDPOINTS.list, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      if (!response.ok) {
+        throw new Error(`Failed to fetch feedback: ${response.status}`);
+      }
+      const data = await response.json().catch(() => []);
+      const items = Array.isArray(data) ? data : Array.isArray(data?.data) ? data.data : [];
+      commentsCache = items.map(normalizeComment).filter(Boolean);
+      renderAll();
+      saveCommentsBackup(commentsCache);
+      setStatus('', 'info');
+      return true;
+    } catch (error) {
+      console.error('Failed to fetch comments from API', error);
+      const fallback = loadCommentsBackup();
+      if (fallback.length) {
+        commentsCache = fallback;
+        renderAll();
+        setStatus('Не удалось обновить отзывы, отображаются сохранённые ранее данные.', 'error');
+      } else {
+        commentsCache = [];
+        renderAll();
+        setStatus('Не удалось загрузить отзывы. Попробуйте ещё раз позже.', 'error');
+      }
+      return false;
+    }
+  }
+
+  async function postComment({ name, text }) {
+    const payload = {
       name: name || 'Аноним',
-      text: text || '',
-      date: now.toLocaleDateString('ru-RU'),
-      createdAt: now.toISOString()
+      comment: text || ''
     };
-    comments.push(entry);
-    saveComments(comments);
-    renderAll();
+    const response = await fetch(API_ENDPOINTS.create, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+    if (!response.ok) {
+      const errorText = await response.text().catch(() => '');
+      throw new Error(`Failed to submit feedback: ${response.status} ${errorText}`);
+    }
+    return response.json().catch(() => null);
   }
 
-  // wire up form
+  function isModalOpen() {
+    return modalEl?.classList.contains('is-open');
+  }
+
+  function openModal() {
+    if (!modalEl) return;
+    lastFocusedEl = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    modalEl.classList.add('is-open');
+    modalEl.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    const nameField = document.getElementById('commentName');
+    if (nameField) {
+      setTimeout(() => nameField.focus(), 50);
+    }
+  }
+
+  function closeModal() {
+    if (!modalEl) return;
+    modalEl.classList.remove('is-open');
+    modalEl.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+    if (lastFocusedEl) {
+      lastFocusedEl.focus();
+    }
+  }
+
+  function handleKeydown(event) {
+    if (event.key === 'Escape' && isModalOpen()) {
+      event.preventDefault();
+      closeModal();
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', function() {
-    renderAll();
+    listEl = document.getElementById('userComments');
     const form = document.getElementById('commentForm');
-    if (!form) return;
-    const modal = document.getElementById('commentModal');
+    modalEl = document.getElementById('commentModal');
+    submitBtn = form ? form.querySelector('.submit-comment') : null;
     const openBtn = document.querySelector('[data-open-comment-modal]');
-    const closeTriggers = modal ? modal.querySelectorAll('[data-modal-close]') : [];
-    let lastFocusedEl = null;
+    const closeTriggers = modalEl ? modalEl.querySelectorAll('[data-modal-close]') : [];
 
-    function isModalOpen() {
-      return modal?.classList.contains('is-open');
-    }
+    fetchComments();
 
-    function openModal() {
-      if (!modal) return;
-      lastFocusedEl = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-      modal.classList.add('is-open');
-      modal.setAttribute('aria-hidden', 'false');
-      document.body.classList.add('modal-open');
-      const nameField = document.getElementById('commentName');
-      if (nameField) {
-        setTimeout(() => nameField.focus(), 50);
-      }
-    }
-
-    function closeModal() {
-      if (!modal) return;
-      modal.classList.remove('is-open');
-      modal.setAttribute('aria-hidden', 'true');
-      document.body.classList.remove('modal-open');
-      if (lastFocusedEl) {
-        lastFocusedEl.focus();
-      }
-    }
-
-    function handleKeydown(event) {
-      if (event.key === 'Escape' && isModalOpen()) {
-        event.preventDefault();
-        closeModal();
-      }
-    }
+    if (!form) return;
 
     openBtn?.addEventListener('click', (event) => {
       event.preventDefault();
@@ -194,26 +335,50 @@ end: () => "+=" + (panelsContainer.scrollWidth - innerWidth)
       });
     });
 
-    modal?.addEventListener('click', (event) => {
-      if (event.target === modal) {
+    modalEl?.addEventListener('click', (event) => {
+      if (event.target === modalEl) {
         closeModal();
       }
     });
 
     document.addEventListener('keydown', handleKeydown);
 
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', async function(e) {
       e.preventDefault();
       const nameEl = document.getElementById('commentName');
       const textEl = document.getElementById('commentText');
       if (!textEl) return;
       const name = nameEl ? nameEl.value.trim() : '';
       const text = textEl.value.trim();
-      if (!text) return;
-      addComment(name, text);
-      // clear textarea and keep name
-      textEl.value = '';
-      closeModal();
+      if (!text) {
+        setStatus('Пожалуйста, введите текст отзыва.', 'error');
+        textEl.focus();
+        return;
+      }
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.dataset.initialText = submitBtn.dataset.initialText || submitBtn.textContent;
+        submitBtn.textContent = 'Отправляем...';
+      }
+
+      try {
+        await postComment({ name, text });
+        const fetched = await fetchComments({ showLoading: false });
+        if (fetched) {
+          setStatus('Спасибо! Ваш отзыв отправлен.', 'success');
+          textEl.value = '';
+          closeModal();
+        }
+      } catch (error) {
+        console.error('Failed to submit feedback', error);
+        setStatus('Не удалось отправить отзыв. Попробуйте ещё раз позже.', 'error');
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = submitBtn.dataset.initialText || 'Отправить';
+        }
+      }
     });
   });
 })();
