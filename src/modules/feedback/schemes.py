@@ -13,10 +13,14 @@ class FeedbackCreateResponse(SQLModel):
     comment: str = Field(description="Feedback comment provided by the user")
     created_at: datetime = Field(description="Timestamp when the feedback was created")
     
+    active: bool = Field(description="Indicates if the feedback is active")
+    
 
 class FeedbackReadResponse(SQLModel):
     id: UUID = Field(description="Unique identifier for the feedback")
     name: str = Field(description="Name of the user providing feedback")
     comment: str = Field(description="Feedback comment provided by the user")
     created_at: datetime = Field(description="Timestamp when the feedback was created")
+    
+    active: bool = Field(description="Indicates if the feedback is active")
 

@@ -7,11 +7,16 @@ engine = None
 def get_database_url():
     try:
         if settings.database.POSTGRES_URL:
+            print("Using provided POSTGRES_URL", settings.database.POSTGRES_URL)
             return settings.database.POSTGRES_URL
     except AttributeError:
         raise ValueError("Database configuration is missing.") 
-    
-    return ""
+    print("Assembling database URL from components")
+    return f"postgresql://{settings.database.POSTGRES_USER}:" \
+           f"{settings.database.POSTGRES_PASSWORD}@" \
+           f"{settings.database.POSTGRES_HOST}:" \
+            f"{settings.database.POSTGRES_PORT}/" \
+            f"{settings.database.POSTGRES_DB}"
 
 def get_engine():
     global engine

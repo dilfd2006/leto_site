@@ -1,23 +1,55 @@
 services:
+  #front
+  frontend:
+    container_name: frontend
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      target: frontend
+    ports:
+      - "8080:80"        
+    restart: unless-stopped
+
   #bot
   bot:
       container_name: bot
       build:
         context: .
-        dockerfile: ./docker/Dockerfile.bot
+        dockerfile: ./Dockerfile
+        target: bot
       env_file:
-        - ./.env
+        - .env
       volumes:
         - ./:/app
       depends_on:
         api:
-          condition: service_healthy
+          condition: service_started
+      networks:
+        - postgres
+  
+  migrations:
+    build:
+      context: .
+      target: migrations
+    container_name: migrations
+    env_file:
+      - .env
+    networks:
+      - postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: no
+
   #api
   api:
       container_name: api
       build:
         context: .
-        dockerfile: ./docker/Dockerfile.api
+        dockerfile: ./Dockerfile
+        target: api
+      ports:
+        - "8000:8000"
       env_file:
         - ./.env
       volumes:
@@ -25,21 +57,22 @@ services:
       depends_on:
         postgres:
           condition: service_healthy
+      networks:
+        - postgres
 
   #migrations
   postgres:
       container_name: db
       image: postgres:16.10-alpine3.22
       volumes:
-        - ./docker/postgresql.conf:/etc/postgresql.conf:ro
         - db_data:/var/lib/postgresql/data
       environment:
         POSTGRES_DB: ${POSTGRES_DB}
         POSTGRES_USER: ${POSTGRES_USER}
         POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
         PGDATA: /var/lib/postgresql/data/pgdata
-      command: >
-        postgres -c config_file=/etc/postgresql.conf
+      # command: >
+      #   postgres -c config_file=/etc/postgresql.conf
       ports:
         - ${POSTGRES_PORT}:5432
       networks:
@@ -50,4 +83,10 @@ services:
         interval: 10s
         timeout: 5s
         retries: 5
-        start_period: 5s
+
+volumes:
+  db_data:
+
+networks:
+  postgres:
+    driver: bridge

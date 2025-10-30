@@ -19,6 +19,31 @@ def get_feedback(session: Session,
     feedback = session.get(Feedback, UUID(feedback_id))
     return feedback
 
-def get_all_feedback(session: Session):
-    feedbacks = session.query(Feedback).all()
+def get_all_active_feedback(session: Session):
+    """Retrieve all active feedback entries from the database"""
+    feedbacks = session.query(Feedback).filter(Feedback.active == True).all() # type: ignore
     return feedbacks
+
+def get_all_inactive_feedback(session: Session):
+    """Retrieve all inactive feedback entries from the database"""
+    feedbacks = session.query(Feedback).filter(Feedback.active == False).all() # type: ignore
+    return feedbacks
+
+
+def approve_feedback(
+        session: Session,
+        feedback: Feedback):
+    feedback.active = True
+    session.add(feedback)
+    session.commit()
+    session.refresh(feedback)
+    return feedback
+
+def reject_feedback(
+        session: Session,
+        feedback: Feedback):
+    feedback.active = False
+    session.add(feedback)
+    session.commit()
+    session.refresh(feedback)
+    return feedback

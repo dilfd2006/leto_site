@@ -12,5 +12,6 @@ class Feedback(SQLModel, table=True):
     comment: str = Field(description="Feedback comment provided by the user")
     created_at: datetime = Field(default_factory=datetime.utcnow, description="Timestamp when the feedback was created")
     
+    active: bool = Field(default=False, description="Indicates if the feedback is active")
 
     

@@ -33,11 +33,24 @@ class DatabaseSettings(BaseSettings):
         case_sensitive=True,
         extra="ignore",
     )
+    
+class APISettings(BaseSettings):
+    API_HOST: str = Field(default="localhost")
+    API_PORT: int = Field(default=8000)
+    
+    model_config = SettingsConfigDict(
+        env_file=str(PROJECT_ROOT / ".env"),
+        env_file_encoding="utf-8",
+        case_sensitive=True,
+        extra="ignore",
+    )
 
 class Settings(BaseSettings):
     database: DatabaseSettings = DatabaseSettings()
+    api: APISettings = APISettings()
 
     TOKEN: str = Field(default="invalid_token")
+    ADMIN_ID: int = Field(default=0)
 
     model_config = SettingsConfigDict(
         env_file=str(PROJECT_ROOT / ".env"),
